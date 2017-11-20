@@ -11,7 +11,8 @@
 
  $id = $_POST['number'];
  //$id = $id.'_customer';
- //$status = $_POST['status'];
+ $status = $_POST['status'];
+ //var_dump($status);
  //$customer->number = 3;
 
  // $res=$customer::findAll();

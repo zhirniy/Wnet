@@ -17,11 +17,10 @@ abstract class Model
         return $dbn1->query('SELECT * FROM '.$table.'  WHERE '.$column.'='.$id);
     }
 
-    public static function findById1()
+    public static function findById1($id, $status)
     {
-   // $dbn1 = Connect::instance();
-    //     return $dbn1->query('SELECT * FROM '.$table. ' WHERE id='.$id);  
-        return 'number2';
+        $dbn1 = Connect::instance();
+        return $dbn1->query('SELECT obj_services.title_service, obj_services.status, obj_contracts.id_contract, obj_contracts.number, obj_contracts.date_sign, obj_contracts.staff_number  FROM obj_services INNER JOIN obj_contracts ON obj_services.id_contract = obj_contracts.id_contract WHERE obj_contracts.id_customer='.$id.' AND obj_services.status='."'".$status."'");
     
     }
 }

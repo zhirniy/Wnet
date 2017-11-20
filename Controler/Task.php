@@ -41,6 +41,8 @@ class Task
 		//$this->view->message = \Wnet\Model\Message::findAll();	
 		//$this->view->res = $customer::findAll();
 		$this->view->res = $customer::findById($id, 'id_customer','obj_customers');
+		//$this->view->contracts = $customer::findById($id, 'id_customer','obj_contracts');
+		$this->view->contracts_services = $customer::findById1($id, $status);
 		//var_dump($this->view->res);
 		//var_dump($this->view->res[0]->number);
 		//$this->view->number = 3;
