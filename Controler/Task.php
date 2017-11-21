@@ -37,6 +37,8 @@ class Task
 		protected function actionIndex()
 		{
 		 include 'Controler\customer.php';
+		 $this->view->id = $id;
+		 $this->view->status = $status;
 	   //	$this->view->message = \Wnet\Model\Message::findAll($sort, $start, $num);
 		//$this->view->message = \Wnet\Model\Message::findAll();	
 		//$this->view->res = $customer::findAll();
