@@ -42,6 +42,7 @@ class Task
 	   //	$this->view->message = \Wnet\Model\Message::findAll($sort, $start, $num);
 		//$this->view->message = \Wnet\Model\Message::findAll();	
 		//$this->view->res = $customer::findAll();
+		$this->view->obj_contracts = $customer::create_table('obj_contracts', 'id_contract int(11)', 'id_customer int(11)', 'number varchar(100)', 'date_sign date', 'staff_number varchar(100)', 'id_contract');
 		$this->view->res = $customer::findById($id, 'id_customer','obj_customers');
 		//$this->view->contracts = $customer::findById($id, 'id_customer','obj_contracts');
 		$this->view->contracts_services = $customer::findById1($id, $status);

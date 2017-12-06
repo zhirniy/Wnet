@@ -9,7 +9,7 @@ use Wnet\Model\Model;
 
 class Customer extends Model
 {
-const TABLE ='mytable';
+//const TABLE ='mytable';
 public $id;
 public $user;
 public $email;

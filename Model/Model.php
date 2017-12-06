@@ -23,6 +23,34 @@ abstract class Model
         return $dbn1->query('SELECT obj_services.title_service, obj_services.status, obj_contracts.id_contract, obj_contracts.number, obj_contracts.date_sign, obj_contracts.staff_number  FROM obj_services INNER JOIN obj_contracts ON obj_services.id_contract = obj_contracts.id_contract WHERE obj_contracts.id_customer='.$id.' AND obj_services.status='."'".$status."'");
     
     }
+
+        public static function create_table($table, ...$params)
+    {
+
+       $lenght = count($params);
+       $sql = null;
+      // var_dump($lenght);
+       // $count = null; 
+      //  var_dump($params);
+       // foreach ($arr as $value) {
+        //    $count += $value;
+       // }
+       // var_dump($count);
+        for($i=0; $i < $lenght - 1; $i++){
+            $sql .=  $params[$i].', ';
+        }
+       // $sql = ''
+       // $dbn1 = Connect::instance();
+        $sql = 'CREATE TABLE '.$table.' ('.$sql.' PRIMARY KEY ('.$params[$lenght].'))';
+        var_dump($sql);
+        echo $params[$lenght];
+        
+        //var_dump($sql);
+       // var_dump($table);
+       // return $dbn1->query('CREATE TABLE obj_contracts (id_contract (int 11), id_customer (int 11), number (varchar 100), date_sign (date), PRIMARY KEY (id_contract)' );
+      //return $dbn1->query('CREATE TABLE '.$table.' ('.$params[0].', id_customer int(11), number varchar(100), date_sign date, staff_number varchar(100), PRIMARY KEY (id_contract))');
+    }
+
 }
     /**
      *Статический метод возвращающий запись по id из базы данных
