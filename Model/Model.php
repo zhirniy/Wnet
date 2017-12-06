@@ -5,16 +5,55 @@
 
 abstract class Model
 {
-	//const TABLE = '';
-	//public $id;
+
 	 /**
      *Статический метод возвращающий всю информацию из базы данных
      *@return array
      */
-	public static function findById($id, $column, $table)
+    public static function create_data_base($name)
+    {   
+
+        $sql = 'CREATE DATABASE '.$name;
+       // echo $sql;
+        $dbn1 = Connect::instance();
+        return $dbn1->query($sql);
+
+    }
+
+
+    public static function create_table($table, ...$params)
     {
+
+       $lenght = count($params);
+       $sql = null;
+        for($i=0; $i < $lenght - 1; $i++){
+            $sql .=  $params[$i].', ';
+        }
+       
+        $sql = 'CREATE TABLE '.$table.' ('.$sql.' PRIMARY KEY ('.$params[$lenght-1].'))';
+        //echo $sql;
+        $dbn1 = Connect::instance();
+        return $dbn1->query($sql);
+
+    }
+
+       public static function insert_table()
+    {   
+
+        $sql = "INSERT INTO  obj_services (id_contract, title_service, status) VALUES (1, '123', 'work')";
+        echo $sql;
+        $dbn1 = Connect::instance();
+        return $dbn1->query($sql);
+
+    }
+
+
+	  public static function findById($id, $column, $table)
+    {
+
         $dbn1 = Connect::instance();
         return $dbn1->query('SELECT * FROM '.$table.'  WHERE '.$column.'='.$id);
+
     }
 
     public static function findById1($id, $status)
@@ -24,33 +63,8 @@ abstract class Model
     
     }
 
-        public static function create_table($table, ...$params)
-    {
 
-       $lenght = count($params);
-       $sql = null;
-      // var_dump($lenght);
-       // $count = null; 
-      //  var_dump($params);
-       // foreach ($arr as $value) {
-        //    $count += $value;
-       // }
-       // var_dump($count);
-        for($i=0; $i < $lenght - 1; $i++){
-            $sql .=  $params[$i].', ';
-        }
-       // $sql = ''
-       // $dbn1 = Connect::instance();
-        $sql = 'CREATE TABLE '.$table.' ('.$sql.' PRIMARY KEY ('.$params[$lenght].'))';
-        var_dump($sql);
-        echo $params[$lenght];
         
-        //var_dump($sql);
-       // var_dump($table);
-       // return $dbn1->query('CREATE TABLE obj_contracts (id_contract (int 11), id_customer (int 11), number (varchar 100), date_sign (date), PRIMARY KEY (id_contract)' );
-      //return $dbn1->query('CREATE TABLE '.$table.' ('.$params[0].', id_customer int(11), number varchar(100), date_sign date, staff_number varchar(100), PRIMARY KEY (id_contract))');
-    }
-
 }
     /**
      *Статический метод возвращающий запись по id из базы данных

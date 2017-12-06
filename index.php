@@ -2,7 +2,7 @@
 session_start();
 require 'autoload.php';
 //try{
-
+//var_dump($_POST['number']);
 $controler = new Wnet\Controler\Task();
 $action = $_GET['action'] ? : 'Index';
 
