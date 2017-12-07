@@ -31,17 +31,17 @@ abstract class Model
         }
        
         $sql = 'CREATE TABLE '.$table.' ('.$sql.' PRIMARY KEY ('.$params[$lenght-1].'))';
-        //echo $sql;
+       // echo $sql;
         $dbn1 = Connect::instance();
         return $dbn1->query($sql);
 
     }
 
-       public static function insert_table()
+       public static function insert_table($sql)
     {   
 
-        $sql = "INSERT INTO  obj_services (id_contract, title_service, status) VALUES (1, '123', 'work')";
-        echo $sql;
+        $sql = "INSERT INTO ".$sql;
+       // echo $sql;
         $dbn1 = Connect::instance();
         return $dbn1->query($sql);
 
