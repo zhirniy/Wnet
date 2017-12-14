@@ -1,70 +1,59 @@
 <html>
   <head>
     <title>Тестовое задание</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
    <script>
 
-$(document).ready(function(){ 
-$("#search_results").slideUp(); 
-    $("#submit").click(function(e){ 
+$(document).ready(function(){
+$("#submit").click(function(e){ 
         e.preventDefault(); 
         ajax_search(); 
     }); 
-    $("#status1").change(function(e){ 
+ $("#number").change(function(e){ 
         e.preventDefault(); 
         ajax_search(); 
     }); 
-    $("#status2").change(function(e){ 
+  $("#status1").change(function(e){ 
         e.preventDefault(); 
         ajax_search(); 
     }); 
-    $("#status3").change(function(e){ 
+  $("#status2").change(function(e){ 
         e.preventDefault(); 
         ajax_search(); 
     }); 
-        $("#number").change(function(e){ 
+  $("#status3").change(function(e){ 
         e.preventDefault(); 
         ajax_search(); 
-    }); 
+    });
+
 
 
 });
 
-function ajax_search(){ 
-  $.ajax({
-    type: "POST",
-    url: "./customer.php",
-    // The key needs to match your method's input parameter (case-sensitive).
-    data: JSON.stringify({ Markers: markers }),
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    success: function(data){alert(data);},
-    failure: function(errMsg) {
-        alert(errMsg);
-    }
-});
- /* $("#search_results").show(); 
-  var search_val = $("#number").val(); 
+function ajax_search(){
+  var search_val = $("#number").val();
   var search_status = status();
-   $.post("./customer.php",
-   {
-    number : search_val,
+  $.ajax({
+   type: "POST",
+  // dataType: 'json',
+   url: "customer.php",
+   data: {
+    number:search_val,
     status: search_status
+  },
+   success: function(html){
+      $("#search_results").html(html);
+    }
+ });
 
-   }, 
-   function(data){
-  if (data.length>0){ 
-     $("#search_results").html(data); 
- } 
-});
+}
 
 function status(){
  var value = $('input[name=status]:checked').val();
  return value; 
-}*/
+}
 
-
-} 
 
 </script>
   </head>
