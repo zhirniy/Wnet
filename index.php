@@ -10,7 +10,7 @@ $("#submit").click(function(e){
         e.preventDefault(); 
         ajax_search(); 
     }); 
- $("#number").change(function(e){ 
+ $("#number").keyup(function(e){ 
         e.preventDefault(); 
         ajax_search(); 
     }); 
@@ -34,17 +34,22 @@ $("#submit").click(function(e){
 function ajax_search(){
   var search_val = $("#number").val();
   var search_status = status();
-  $.ajax({
-   type: "POST",
-  // dataType: 'json',
+   $.ajax({
    url: "customer.php",
+   type: "POST",
+   dataType: 'json',
+   //contentType: "application/json",
    data: {
-    number:search_val,
-    status: search_status
-  },
+            number:search_val,
+            status:search_status
+   },
+  
    success: function(html){
       $("#search_results").html(html);
-    }
+    },
+    error: function (error) {
+    $("#search_results").html(error);
+}
  });
 
 }
@@ -66,7 +71,7 @@ function status(){
   	<input id="submit" type="submit" name="submit" value="Отправить">
   </form>
   <p id="search_results">123</p>
- 
+
   </body>
 </html>
 
