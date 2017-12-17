@@ -70,8 +70,7 @@ function status(){
     <label>disconnected</label><input id="status3" type="radio" name="status" value="disconnected" required>
   	<input id="submit" type="submit" name="submit" value="Отправить">
   </form>
-  <p id="search_results">123</p>
-
+  <p id="search_results">Выберите пользователя</p>
   </body>
 </html>
 
