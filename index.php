@@ -71,7 +71,7 @@ function status(){
   	<input id="submit" type="submit" name="submit" value="Отправить">
   </form>
   <p id="search_results">Выберите пользователя</p>
-  <?//php include 'customer.php'; ?>
+  <?php //include 'customer.php'; ?>
   </body>
 </html>
 
