@@ -44,19 +44,20 @@ class Model extends DB
 	    $res .= ' Имя клиента: '.$customer->name_customer.'</br>';
 	    $res .= 'Информация про компанию'.$customer->company.'</br>';
 	    $res .=  '<h3>'.'Информация про сервисы: '.'</h3>'; 
+                 if($sql_services->num_rows!=0){	    
 	    	     while ($contracts_services_ = $sql_services->fetch_object()){
 		        if(!empty($contracts_services_->title_service)){
-                  $res .=  ' '.$contracts_services_->title_service;
-		          $res .=  ' '.$contracts_services_->id_contract;
-		          $res .=  ' '.$contracts_services_->number;
-		          $res .=  ' '.$contracts_services_->date_sign;
+                  $res .=  'Название сервиса:'.$contracts_services_->title_service.'</br>';
+		          $res .=  'Номер контракта:'.$contracts_services_->id_contract.'</br>';
+		          $res .=  'Номер сервиса:'.$contracts_services_->number.'</br>';
+		          $res .=  'Дата создания:'.$contracts_services_->date_sign;
               			}
-              	else{
-              		 $res .= 'Нет сервисов';
-              	}		
-
+           
                  }
-	    
+	             }
+	             else{
+	             	$res .='Нет сервисов';
+	             }
 	              return $res;
 	       }
 	    }
