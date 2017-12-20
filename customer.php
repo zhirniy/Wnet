@@ -7,7 +7,7 @@ $id = $_POST['number'];
 $status = $_POST['status'];
 
 $db = new Model();
-$res = $db->data($id, 'id_customer','obj_customers');
+$res = $db->data($id, $status, 'id_customer','obj_customers');
 
 echo json_encode($res);
 
